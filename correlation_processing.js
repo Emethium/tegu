@@ -14,7 +14,7 @@ self.onmessage = function(event)
 function findAmplitudeCorrelation(timeseries, testFrequencies, sampleRate) {
 	/*
    * The 2pi * frequency gives the appropriate period to sine while the
-	 * timeseries index / sample_rate gives the appropriate time coordinate.
+	 * timeseries index / sampleRate gives the appropriate time coordinate.
   */
   var scaleFactor = 2 * Math.PI / sampleRate;
 	var amplitudes = testFrequencies.map( function(f) {
