@@ -1,0 +1,53 @@
+audio-visualizer {
+  display: block;
+  width: 100%;
+  height: 316px;
+  position: relative;
+}
+
+audio-visualizer:not(.resolved)::after {
+  content: '';
+  display: block;
+  max-width: 316px;
+  max-height: 316px;
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+
+  border-radius: 50%;
+  box-shadow: inset 0 0 0 57px #FF9800;
+}
+
+@media (min-height: 544px), (min-width: 600px) {
+  audio-visualizer {
+    height: 316px;
+  }
+
+  audio-visualizer:not(.resolved)::after {
+    box-shadow: inset 0 0 0 57px #FF9800;
+  }
+}
+
+tuning-instructions {
+  margin-top: 22px;
+  position: relative;
+}
+
+tuning-instructions:not(.resolved) {
+  display: block;
+  width: 140px;
+  height: 100px;
+}
+
+tuning-instructions:not(.resolved)::after {
+  position: absolute;
+  content: '';
+  display: block;
+  width: 56px;
+  height: 56px;
+  top: 0;
+  left: 42px;
+
+  border-radius: 50%;
+  background: #FFF;
+}
