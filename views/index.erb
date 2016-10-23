@@ -7,24 +7,18 @@
         <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
         <meta id="theme-color" name="theme-color" content="#263238">
         <title>Tegu - An HTML5 Guitar Tuner</title>
-
-        <style>
-            {% include "dist/styles/tegu.css" %}
-        </style>
-
     </head>
 
     <body class="{{ deeplink_class }}">
 
         <main class="main">
-            <audio-processor></audio-processor>
-            <audio-visualizer></audio-visualizer>
-            <tuning-instructions></tuning-instructions>
+            <audioProcessor></audioProcessor>
+            <audioPresentation></audioPresentation>
         </main>
 
         <aside class="toast-view"></aside>
 
-        <script async src="/scripts/tegu-core.js"></script>
+        <script async src="/js/core.js"></script>
 
     </body>
 
