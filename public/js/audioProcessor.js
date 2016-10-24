@@ -4,7 +4,7 @@
 
 class AudioProcessor {
     constructor() {
-
+        console.log("NIGGA, I WAS CREATED");
     }
 
     get is() {
@@ -70,26 +70,37 @@ class AudioProcessor {
         this.dispatchAudioData = this.dispatchAudioData.bind(this);
         this.sortStringKeysByDifference = this.sortStringKeysByDifference.bind(this);
         this.onVisibilityChange = this.onVisibilityChange.bind(this);
+        console.log("OK THEN, SHOWTIME");
     }
 
     requestUserMedia() {
+        window.AudioContext = window.AudioContext ||
+            window.webkitAudioContext ||
+            window.mozAudioContext ||
+            window.msAudioContext;
+
+        navigator.getUserMedia = navigator.getUserMedia ||
+            navigator.webkitGetUserMedia ||
+            navigator.mozGetUserMedia ||
+            navigator.msGetUserMedia;
+
         navigator.getUserMedia({
-            audio: true
-        }, (stream) => {
-            this.sendingAudioData = true;
-            this.stream = stream;
-            this.microphone = this.audioContext.createMediaStreamSource(stream);
-            this.microphone.connect(this.analyser);
-            this.analyser.connect(this.gainNode);
-            this.gainNode.connect(this.audioContext.destination);
+                audio: true
+            }, (stream) => {
+                this.sendingAudioData = true;
+                this.stream = stream;
+                this.microphone = this.audioContext.createMediaStreamSource(stream);
+                this.microphone.connect(this.analyser);
+                this.analyser.connect(this.gainNode);
+                this.gainNode.connect(this.audioContext.destination);
 
-            requestAnimationFrame(this.dispatchAudioData);
+                requestAnimationFrame(this.dispatchAudioData);
 
-        } /*(err) => {
-            ToasterInstance().then((toaster) => {
-                toaster.toast('Unable to access the microphone');
+            },
+            (err) => {
+                console.log("DO NOTHING HERE, YOU BITCH");
             });
-        }*/);
+        console.log("I'M ASKING FOR YOUR MEDIA, DUMBASS");
     }
 
     attached() {
@@ -293,16 +304,22 @@ class AudioProcessor {
         // The note is 0 for A, all the way to 11 for G#.
         let note = (12 + (Math.round(semitonesFromA4) % 12)) % 12;
 
-        console.log(frequency);
-        console.log(octave);
-        console.log(note);
+        console.log("-----------------------------------");
+        console.log("Frequency: ", frequency);
+        console.log("Octave: ", octave);
+        console.log("Note: ",note);
+        console.log("-----------------------------------");
 
         // Now tell anyone who's interested.
-        this.fire('audio-data', {
+        /*this.fire('audio-data', {
             frequency,
             octave,
             note
-        });
+        });*/
+
+        document.getElementById("frequency").textContent = frequency;
+        document.getElementById("octave").textContent = octave;
+        document.getElementById("note").textContent = note;
     }
 }
 
