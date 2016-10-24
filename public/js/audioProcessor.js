@@ -4,7 +4,7 @@
 
 class AudioProcessor {
     constructor() {
-        console.log("NIGGA, I WAS CREATED");
+
     }
 
     get is() {
@@ -70,7 +70,6 @@ class AudioProcessor {
         this.dispatchAudioData = this.dispatchAudioData.bind(this);
         this.sortStringKeysByDifference = this.sortStringKeysByDifference.bind(this);
         this.onVisibilityChange = this.onVisibilityChange.bind(this);
-        console.log("OK THEN, SHOWTIME");
     }
 
     requestUserMedia() {
@@ -98,9 +97,9 @@ class AudioProcessor {
 
             },
             (err) => {
-                console.log("DO NOTHING HERE, YOU BITCH");
+                console.log("I don't plan on dealing with this error.");
             });
-        console.log("I'M ASKING FOR YOUR MEDIA, DUMBASS");
+        console.log("Requesting audio source.");
     }
 
     attached() {
@@ -304,22 +303,20 @@ class AudioProcessor {
         // The note is 0 for A, all the way to 11 for G#.
         let note = (12 + (Math.round(semitonesFromA4) % 12)) % 12;
 
+        /*
         console.log("-----------------------------------");
         console.log("Frequency: ", frequency);
         console.log("Octave: ", octave);
         console.log("Note: ",note);
         console.log("-----------------------------------");
+        */
 
-        // Now tell anyone who's interested.
-        /*this.fire('audio-data', {
-            frequency,
-            octave,
-            note
-        });*/
+        var notePallete = ['A','A#','B','C','C#','D','D#','E','F','F#','G','G#'];
+        var noteName = notePallete[note];
 
         document.getElementById("frequency").textContent = frequency;
         document.getElementById("octave").textContent = octave;
-        document.getElementById("note").textContent = note;
+        document.getElementById("note").textContent = noteName;
     }
 }
 
