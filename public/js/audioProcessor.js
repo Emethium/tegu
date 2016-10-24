@@ -1,10 +1,14 @@
-import ToasterInstance from './libs/Toaster'
+/*jshint esversion: 6 */
+
+//import ToasterInstance from './libs/Toaster';
+
 class AudioProcessor {
     constructor() {
 
     }
+
     get is() {
-        return 'audioProcessor'
+        return 'audioProcessor';
     }
 
     created() {
@@ -81,11 +85,11 @@ class AudioProcessor {
 
             requestAnimationFrame(this.dispatchAudioData);
 
-        }, (err) => {
+        } /*(err) => {
             ToasterInstance().then((toaster) => {
-                toaster.toast('Unable to access the microphone')
+                toaster.toast('Unable to access the microphone');
             });
-        });
+        }*/);
     }
 
     attached() {
@@ -289,6 +293,10 @@ class AudioProcessor {
         // The note is 0 for A, all the way to 11 for G#.
         let note = (12 + (Math.round(semitonesFromA4) % 12)) % 12;
 
+        console.log(frequency);
+        console.log(octave);
+        console.log(note);
+
         // Now tell anyone who's interested.
         this.fire('audio-data', {
             frequency,
@@ -299,4 +307,3 @@ class AudioProcessor {
 }
 
 new AudioProcessor();
-}
