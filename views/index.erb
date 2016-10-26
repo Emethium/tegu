@@ -5,33 +5,26 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
-        <title>Tegu - An HTML5 Guitar Tuner</title>
+        <title>Tegu - An HTML Guitar Tuner</title>
     </head>
 
-    <body class="{{ deeplink_class }}">
-
-        <main class="main">
-            <audioProcessor></audioProcessor>
-            <audioPresentation></audioPresentation>
-        </main>
-
+    <body>
         <script type='text/javascript' src='../js/audioProcessor.js'></script>
-        <script type='text/javascript' src='../js/audioPresentation.js'></script>
         <script type="text/javascript">
-          var audioProcessor = new AudioProcessor();
-          audioProcessor.created();
-          audioProcessor.requestUserMedia();
+            var audioProcessor = new AudioProcessor();
+            audioProcessor.created();
+            audioProcessor.requestUserMedia();
         </script>
 
-        <p>It sounds like you're playing...</p>
+        <p>Parece que você está tocando a nota:</p>
         <h1 id="note"></h1>
         <p>
-            <span>Frequency (Hz):</span>
+            <span>Frequência:</span>
             <span id="frequency"></span>
         </p>
         <p>
-          <span>Octave:</span>
-          <span id="octave"></span>
+            <span>Oitava:</span>
+            <span id="octave"></span>
         </p>
         <hr>
     </body>

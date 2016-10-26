@@ -1,15 +1,6 @@
 /*jshint esversion: 6 */
 
-//import ToasterInstance from './libs/Toaster';
-
 class AudioProcessor {
-    constructor() {
-
-    }
-
-    get is() {
-        return 'audioProcessor';
-    }
 
     created() {
         this.FFTSIZE = 2048;
@@ -64,9 +55,6 @@ class AudioProcessor {
         this.rmsThreshold = 0.006;
         this.assessedStringsInLastFrame = false;
         this.assessStringsUntilTime = 0;
-
-        // Bind as we would have done for anything in the constructor so we can use
-        // them without confusing what 'this' means. Yay window scoped.
         this.dispatchAudioData = this.dispatchAudioData.bind(this);
         this.sortStringKeysByDifference = this.sortStringKeysByDifference.bind(this);
         this.onVisibilityChange = this.onVisibilityChange.bind(this);
@@ -94,7 +82,6 @@ class AudioProcessor {
                 this.gainNode.connect(this.audioContext.destination);
 
                 requestAnimationFrame(this.dispatchAudioData);
-
             },
             (err) => {
                 console.log("I don't plan on dealing with this error.");
@@ -105,7 +92,6 @@ class AudioProcessor {
     attached() {
         // Set up the stream kill / setup code for visibility changes.
         document.addEventListener('visibilitychange', this.onVisibilityChange);
-
         // Then call it.
         this.onVisibilityChange();
     }
@@ -311,7 +297,8 @@ class AudioProcessor {
         console.log("-----------------------------------");
         */
 
-        var notePallete = ['A','A#','B','C','C#','D','D#','E','F','F#','G','G#'];
+        var notePallete = ["A (Lá)", "A# (Lá sustenido)", "B (Si)", "C (Dó)", "C# (Dó sustenido)",
+          "D (Ré)", "D# (Ré sustenido)", "E (Mi)", "F (Fá)", "F# (Fá sustenido)", "G (Sol)", "G# (Sol sustenido)"];
         var noteName = notePallete[note];
 
         document.getElementById("frequency").textContent = frequency;
